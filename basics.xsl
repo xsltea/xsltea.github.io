@@ -14,9 +14,13 @@
 
 <xsl:template match="/">
   <xsl:value-of select="$baz" />
+  <xsl:text>&#xA;</xsl:text>
   <xsl:value-of select="$quux" />
+  <xsl:text>&#xA;</xsl:text>
   <xsl:value-of select="$parsed_quux" />
+  <xsl:text>&#xA;</xsl:text>
   <xsl:value-of select="$xyzzy" />
+  <xsl:text>&#xA;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>
