@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+function load(name) {
+  var request = new XMLHttpRequest();
+  request.open('GET', code + '.xsl');
+  request.onload = function() {
+    if (request.status === 200) {
+      message = this.responseText;
+    } else {
+      message = 'http error: ' + request.status;
+    }
+    element = document.getElementById(name);
+    text = document.createTextNode(message);
+    element.appendChild(text);
+  }
+  request.send(null);
+}
+
+function init() {
+  var codes = ['basics'];
+
+  for (var i in codes) {
+    code = codes[i];
+    load(code);
+  }
+}
+  </script>
   <title>xsltea.org - the xsl tutorial infusion</title>
   <style>
 body {
@@ -12,16 +38,41 @@ h1 {
 	text-align: center;
 	font-size: 3em;
 }
+
+pre {
+	background-color: #fff;
+        border: thin solid #888;
+        padding: 0.4em;
+}
+pre.console {
+	background-color: #000;
+	color: #aaa;
+}
   </style>
 </head>
-<body>
+<body onload="init();">
   <h1>
     xsl<br />
     &#x1f375;<br />
     .org
   </h1>
+  <h2>Basics</h2>
   <p>
-TBD
+You can do some basiscs as follows.
   </p>
+  <p><a href="basics.xsl">basics.xsl</a></p>
+  <pre class="code" id="basics">
+  </pre>
+
+  <p>
+You can execute the program with xsltproc as follows.
+  </p>
+  <pre class="console">
+$ echo '&lt;o/&gt;'|xsltproc basics.xsl -
+13
+5
+5
+5
+  </pre>
 </body>
 </html>
