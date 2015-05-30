@@ -1,4 +1,4 @@
 xsltea.github.io
 ================
 
-xsltea.org web site
+xsltea.github.io web site
